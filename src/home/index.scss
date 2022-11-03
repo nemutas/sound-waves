@@ -1,0 +1,178 @@
+@use '../styles/mixins/media.scss' as *;
+
+.three-container {
+	width: 100%;
+	height: 100%;
+	background-color: #1e1e1e;
+}
+
+audio {
+	position: absolute;
+	width: 50%;
+	bottom: 3rem;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.ui {
+	position: fixed;
+	top: 0;
+	right: 0;
+	padding: 1rem 2rem;
+	background-color: rgba(0, 0, 0, 0.3);
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 2rem;
+
+	@include sp {
+		gap: 3rem;
+	}
+
+	& > a {
+		position: relative;
+		display: inline-block;
+		color: #fefefe;
+		font-size: 1.5rem;
+
+		@include sp {
+			font-size: 2.5rem;
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			background: #fefefe;
+			transform: scale(0, 1);
+			transform-origin: right top;
+			transition: transform 0.3s;
+		}
+		&:hover::after {
+			transform-origin: left top;
+			transform: scale(1, 1);
+		}
+	}
+
+	& > input {
+		appearance: none;
+		width: 100%;
+		height: 2px;
+		background: #fefefe;
+		outline: none;
+		opacity: 0.7;
+		transition: opacity 0.2s;
+
+		&:hover {
+			opacity: 1;
+		}
+
+		&::-webkit-slider-thumb {
+			appearance: none;
+			width: 0.8rem;
+			aspect-ratio: 1 / 1;
+			background: #fff;
+			box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+			transform: rotate(45deg);
+			cursor: pointer;
+			@include sp {
+				width: 2rem;
+			}
+		}
+
+		&::-moz-range-thumb {
+			appearance: none;
+			width: 0.8rem;
+			aspect-ratio: 1 / 1;
+			background: #fff;
+			transform: rotate(45deg);
+			cursor: pointer;
+			@include sp {
+				width: 2rem;
+			}
+		}
+	}
+}
+
+.play {
+	--x: 0%;
+	--y: 0%;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 15rem;
+	aspect-ratio: 1 / 1;
+	border-radius: 50%;
+	color: #fefefe;
+	background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.8) 65%, transparent 68%, transparent 100%);
+	font-size: 1rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	transform: translate(calc(var(--x) - 50%), calc(var(--y) - 50%));
+
+	@include sp {
+		width: 30rem;
+		font-size: 2rem;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		display: block;
+		width: 100%;
+		aspect-ratio: 1 / 1;
+		border-radius: 50%;
+		border-top: 2px solid #fefefe;
+		border-left: 2px solid #fefefe;
+		animation: rotateOuter 1s ease-in-out reverse infinite;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		width: 95%;
+		aspect-ratio: 1 / 1;
+		border-radius: 50%;
+		border-top: 2px solid #fefefe;
+		border-left: 2px solid #fefefe;
+
+		transform: rotate(-90deg);
+		animation: rotateInner 1s ease-in-out infinite;
+	}
+
+	& > p:last-child {
+		margin-top: 1.5rem;
+		font-size: 2rem;
+
+		@include sp {
+			font-size: 4rem;
+		}
+	}
+}
+
+@keyframes rotateInner {
+	from {
+		transform: rotate(-90deg);
+	}
+	to {
+		transform: rotate(calc(-90deg + 360deg));
+	}
+}
+
+@keyframes rotateOuter {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(calc(360deg));
+	}
+}
