@@ -1,21 +1,7 @@
-# sound-waves
+# About
 
-A simple development enviroment using Vite.
+This application is inspired by [隅田川道中](https://douchu.tokyo/) created by [Kitasenju Design](https://twitter.com/kitasenjudesign).
 
-### 1. clone
+https://nemutas.github.io/sound-waves/
 
-clone this repository
-
-```
-gh repo clone nemutas/sound-waves
-```
-
-### 2. rename
-
-replace `sound-waves` with your project name.
-
-### 3. install packages
-
-```
-npm install
-```
+<img src='https://user-images.githubusercontent.com/46724121/199652993-807944c9-6a66-4157-a961-91a2cc2a94d7.png' alt='' width='800px' />
